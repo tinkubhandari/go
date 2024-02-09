@@ -11,9 +11,20 @@ type geometry interface {
 	perim() float64
 }
 
-// Define a struct 'circle' with a 'radius' field
+// Define a struct 'circle' and 'rectnagle' with a 'radius' field
+type rect struct {
+    width, height float64
+}
+
 type circle struct {
-	radius float64
+    radius float64
+}
+
+func (r rect) area() float64 {
+    return r.width * r.height
+}
+func (r rect) perim() float64 {
+    return 2*r.width + 2*r.height
 }
 
 // Implement the 'area' method for the 'circle' struct
@@ -26,13 +37,19 @@ func (c circle) perim() float64 {
 	return 2 * math.Pi * c.radius
 }
 
+func measure(g geometry) {
+    fmt.Println(g)
+    fmt.Println(g.area())
+    fmt.Println(g.perim())
+}
+
 // Example function demonstrating the use of the 'geometry' interface
 func InterfaceExample1() {
-	// Create an instance of the 'circle' struct
-	c := circle{radius: 5}
+    r := rect{width: 3, height: 4}
+    c := circle{radius: 5}
 
-	// Call the 'area' and 'perim' methods using the 'geometry' interface
-	// The type 'circle' automatically satisfies the 'geometry' interface
-	fmt.Println("Area:", c.area())
-	fmt.Println("Perimeter:", c.perim())
+     // Call the 'area' and 'perim' methods using the 'geometry' interface
+     // The type 'circle' automatically satisfies the 'geometry' interface
+    measure(r)
+    measure(c)
 }
