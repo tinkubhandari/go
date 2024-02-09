@@ -130,17 +130,28 @@ func InterfaceCommunication() {
 	f.articles()
 }
 
-// Explanation: As shown in the above example we have three interfaces. Interface 1 and 2 are simple interfaces and interface 3 is the embedded interface which holds both 1 and 2 interfaces method signatures in it. So if any changes take place in the interface 1 and interface 2’s methods it will not reflect in interface 3 until we define explicitly in interface 3. And interface 3 can access all the methods present in interface 1 and 2 only if those mentioned in interface 3. Example 3:
+
+//3RD CASE ---------------------------------------------------------->
+// Explanation: As shown in the above example we have three interfaces. 
+//Interface 1 and 2 are simple interfaces and interface 3 is the embedded interface which holds both 1 and 2 interfaces method only signatures in it. 
+//So if any changes take place in the interface 1 and interface 2’s methods it will not reflect in interface 3 until we define explicitly in interface 3. 
+//And interface 3 can access all the methods present in interface 1 and 2 only if those mentioned in interface 3. Example 3:
 
 // type FinalDetails interface {
 // 	details()
 // 	articles()
 // }
 
-// Explanation: As shown in the above example we have three interfaces. Interface 1 and 2 are simple interfaces and interface 3 is the embedded interface which holds both interface 1’s method signatures, interface 2 and it’s own method in it. So if any changes take place in the interface 2’s method it will reflect in interface 3. And interface 3 can access all the methods present in it including interface 2. We can only access interface 1’s method which signature define in interface3.
+
+//4TH CASE ----------------------------------------------------------->
+// Explanation: As shown in the above example we have three interfaces. 
+//Interface 1 and 2 are simple interfaces and interface 3 is the embedded interface which holds both interface 1’s method signatures, 
+//interface 2 and it’s own method in it. So if any changes take place in the interface 2’s method it will reflect in interface 3. 
+//And interface 3 can access all the methods present in it including interface 2.
+//We can only access interface 1’s method which signature define in interface3.
 
 // type FinalDetails interface {
-//     details()
-//     AuthorArticles
-//     cdeatils()
+//     details()---> this changes will not reflect in interface 1
+//     AuthorArticles ----> this chnages will reflect
+//     cdeatils()---> this changes will not reflect in interface 2
 // }
